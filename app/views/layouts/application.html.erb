@@ -21,7 +21,11 @@
             <%= "Logged in as #{current_user.email}" %>
             <%= link_to "(logout)", logout_path %>
           <% else %>
-            <%= link_to "(login)", login_path %>
+            <% if Author.count == 0 %>
+              <%= link_to 'New Author', new_author_path %>
+            <% else %>
+              <%= link_to "(login)", login_path %>
+            <% end %>
           <% end %>
         </h6>
       </div>
